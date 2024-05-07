@@ -1,0 +1,58 @@
+/* Update styles for the form elements */
+form {
+    max-width: 600px;
+    margin: auto;
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.border {
+    border: 1px solid #ced4da;
+}
+
+/* Adjust padding and margin for better spacing */
+.row {
+    margin-bottom: 15px;
+}
+
+/* Style labels */
+label {
+    font-weight: bold;
+}
+
+/* Style checkboxes and radio buttons */
+.form-check-input {
+    margin-top: 0;
+}
+
+/* Center submit button */
+button[type="submit"] {
+    display: block;
+    margin: auto;
+}
+
+/* Adjust width of inputs and selects */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+}
+
+/* Optional: Add some padding to inputs and selects */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select {
+    padding: 8px;
+}
+
+textarea {
+    padding: 8px;
+    resize: vertical; /* Allow vertical resizing of text area */
+}

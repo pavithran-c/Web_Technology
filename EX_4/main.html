@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <link href="../EX_4/css1.css" rel="stylesheet">
+  <link href="../../boot/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../../boot/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      width: 100%;
+    }
+    .form-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <h1 class="mb-4 text-center">Student Registration Form</h1>
+      <form id="registrationForm">
+        <div class="mb-3">
+          <label for="fullName" class="form-label" >Full Name</label>
+          <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" >
+          <small id="fullNameError" class="text-danger d-none" >Full name should not contain numbers</small>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com">
+          <small id="EmailError" class="text-danger d-none"></small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password"><br>
+          <input type="checkbox" onclick="myFunction()">Show Password<br>
+          <small id="passwordError" class="text-danger d-none"></small>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+          <small id="phoneError" class="text-danger d-none">Phone number should be exactly 10 digits and only numbers</small>
+        </div>
+        <div class="mb-3">
+          <label for="rollNo" class="form-label">Roll No</label>
+          <input type="text" class="form-control" id="rollNo" placeholder="Enter your roll no">
+          <small id="rollNoError" class="text-danger d-none">Roll no should be in the format 22itr075</small>
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" id="dob">
+          <small id="dobError" class="text-danger d-none"></small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="gender">Gender</label>
+          <div>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+          </div>
+          <div>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+          </div>
+          <div>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+          </div>
+          <small id="c1" class="text-danger"></small>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" rows="3" placeholder="Enter your address"></textarea>
+          <small id="addressError" class="text-danger d-none"></small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Language</label>
+          <div>
+            <input type="checkbox" id="tamil" name="language" value="tamil">
+            <label for="tamil">Tamil</label>
+          </div>
+          <div>
+            <input type="checkbox" id="english" name="language" value="english">
+            <label for="english">English</label>
+          </div>
+          <small id="languageError" class="text-danger d-none"></small>
+        </div>
+        
+        <div class="mb-3">
+          <label for="district" class="form-label">District</label>
+          <select class="form-select" id="district">
+            <option value="">Select District</option>
+            <option value="district1">District 1</option>
+            <option value="district2">District 2</option>
+            <option value="district3">District 3</option>
+          </select>
+          <small id="districtError" class="text-danger d-none"></small>
+        </div>
+      
+        <button type="submit" class="btn btn-primary d-block mx-auto">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const fullNameInput = document.getElementById("fullName");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const dobInput = document.getElementById("dob");
+      const genderInputs = document.getElementsByName("gender");
+      const addressInput = document.getElementById("address");
+      const languageInputs = document.getElementsByName("language");
+      const districtInput = document.getElementById("district");
+
+      const fullName = fullNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim();
+      const dob = dobInput.value.trim();
+      let gender = "";
+      genderInputs.forEach(input => {
+        if (input.checked) {
+          gender = input.value;
+        }
+      });
+      const address = addressInput.value.trim();
+      const language = [];
+      languageInputs.forEach(input => {
+        if (input.checked) {
+          language.push(input.value);
+        }
+      });
+      const district = districtInput.value.trim();
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      const numberPattern = /^\d+$/; 
+      const namePattern = /^[a-zA-Z\s]*$/; 
+if (fullName === "") {
+  showError(fullNameInput, "Enter your full name");
+} else if (!namePattern.test(fullName)) {
+  showError(fullNameInput, "Full name should not contain numbers");
+} else {
+  hideError(fullNameInput);
+}
+if (email === "") {
+  showError(emailInput, "Enter your email address");
+} else if (!emailPattern.test(email)) {
+  showError(emailInput, "Enter a valid email address");
+} else {
+  hideError(emailInput);
+}
+if (phone === "") {
+  showError(phoneInput, "Enter your phone number");
+} else if (phone.length !== 10 || !numberPattern.test(phone)) {
+  showError(phoneInput, "Phone number should be exactly 10 digits and only numbers");
+} else {
+  hideError(phoneInput);
+}
+if (dob === "") {
+  showError(dobInput, "Select your date of birth");
+} else {
+  hideError(dobInput);
+}
+var d=document.getElementsByName("gender");
+var f=false;
+for(let r of d){
+  if(r.checked){
+    f=true;
+  }
+}
+if(f==false){
+  document.getElementById("c1").innerHTML="Please select your gender";
+}
+else{
+  document.getElementById("c1").innerHTML="";
+}
+if (address === "") {
+  showError(addressInput, "Enter your address");
+} else {
+  hideError(addressInput);
+}
+let languageChecked = false;
+languageInputs.forEach(input => {
+  if (input.checked) {
+    languageChecked = true;
+  }
+});
+if (!languageChecked) {
+  showError(document.getElementById("languageError"), "Select at least one language");
+} else {
+  hideError(document.getElementById("languageError"));
+}
+
+if (district === "") {
+  showError(districtInput, "Select your district");
+} else {
+  hideError(districtInput);
+}
+const passwordInput = document.getElementById("password");
+      const password = passwordInput.value.trim();
+      if (password === "") {
+        showError(passwordInput, "Enter your password");
+      } else if (password.length < 8) {
+        showError(passwordInput, "Password should be at least 8 characters long");
+      } else if (!/\d/.test(password)) {
+        showError(passwordInput, "Password should contain at least one number");
+      } else if (!/[a-zA-Z]/.test(password)) {
+        showError(passwordInput, "Password should contain at least one letter");
+      } else if (!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
+        showError(passwordInput, "Password should contain at least one special character");
+      } else {
+        hideError(passwordInput);
+      }
+      const rollNoInput = document.getElementById("rollNo");
+      const rollNo = rollNoInput.value.trim();
+      const rollNoPattern = /^\d{2}[a-zA-Z]{3}\d{3}$/;
+
+      if (rollNo === "") {
+        showError(rollNoInput, "Enter your roll no");
+      } else if (!rollNoPattern.test(rollNo)) {
+        showError(rollNoInput, "Roll no should be in the format 22ITR075");
+      } else {
+        hideError(rollNoInput);
+      }
+      const errorInputs = document.querySelectorAll(".is-invalid");
+      if (errorInputs.length === 0) {
+        form.submit();
+        window.location.replace("ex5-1.html");
+      }
+      });
+
+    function showError(input, message) {
+      input.classList.add("is-invalid");
+      const errorSmall = input.parentElement.querySelector(".text-danger");
+      errorSmall.innerText = message;
+      errorSmall.classList.remove("d-none");
+    }
+
+    function hideError(input) {
+      input.classList.remove("is-invalid");
+      const errorSmall = input.parentElement.querySelector(".text-danger");
+      errorSmall.classList.add("d-none");
+    }
+    function myFunction() {
+       var x = document.getElementById("password");
+        if (x.type === "password") {
+         x.type = "text";
+        } else {
+          x.type = "password";
+       }
+}
+  </script>
+
+</body>
+</html>
