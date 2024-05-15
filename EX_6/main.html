@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Get and Post</title>
+    <link rel="stylesheet" href="../../boot/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form label {
+            font-weight: bold;
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .btn-custom {
+            margin-right: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            border: none;
+            color: #fff;
+        }
+        .btn-insert {
+            background-color: #28a745; /* Green */
+        }
+        .btn-delete {
+            background-color: #dc3545; /* Red */
+        }
+        .btn-update {
+            background-color: #ffc107; /* Yellow */
+        }
+        .btn-display {
+            background-color: #17a2b8; /* Blue */
+        }
+        .btn-custom:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form">
+                    <form id="myForm" method="post" onsubmit="return validateForm()">
+                        <div class="mb-3">
+                            <label for="rollNo">Roll No</label>
+                            <input type="text" class="form-control" id="rollNo" placeholder="Enter your roll number" name="rollNo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gender" class="form-label">Gender</label>
+                            <div>
+                                <input type="radio" id="male" name="gender" value="Male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="female" name="gender" value="Female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="other" name="gender" value="Other">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" name="address"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label" >Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="state" class="form-label">State</label>
+                            <select class="form-select" id="state" name="state">
+                                <option value="">Select state</option>
+                                <option value="State 1">State 1</option>
+                                <option value="State 2">State 2</option>
+                                <option value="State 3">State 3</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agree">
+                            <label class="form-check-label" for="agree">I agree with Terms and Conditions</label>
+                            <div id="agree-error" class="text-danger" style="display: none;">Please agree to the terms and conditions.</div>
+                        </div>
+                        <button type="submit" class="btn-custom btn-insert" formaction="http://localhost:7050/insert">Insert</button>
+                        <button type="submit" class="btn-custom btn-delete" formaction="http://localhost:7050/delete">Delete</button>
+                        <button type="submit" class="btn-custom btn-update" formaction="http://localhost:7050/update">Update</button>
+                        <button type="submit" class="btn-custom btn-primary" formaction="http://localhost:7050/view">view</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            var agreeCheckbox = document.getElementById("agree");
+            var agreeError = document.getElementById("agree-error");
+            if (!agreeCheckbox.checked) {
+                agreeError.style.display = "block";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
