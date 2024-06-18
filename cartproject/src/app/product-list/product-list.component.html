@@ -1,0 +1,80 @@
+<style>
+  .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+      background-color: #f5f5f5;
+  }
+  .product-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin: 20px;
+      width: 250px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .product-image {
+      max-width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 15px;
+  }
+  .product-card h2 {
+      font-size: 1.5em;
+      margin: 10px 0;
+  }
+  .product-card p {
+      margin: 5px 0;
+      color: #555;
+  }
+  .product-card button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+  .product-card button:hover {
+      background-color: #218838;
+  }
+</style>
+<div class="product-list">
+    <div class="product-card">
+      <img src="./assets/product1.png" alt="Product 1" class="product-image" />
+      <h2>Intel I3</h2>
+      <p>I3</p>
+      <p>10000</p>
+      <button (click)="addToCart({id: 1, name: 'I3', price: 10000, description: 'I3', imageUrl: 'assets/images/headset.webp'})">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./assets/product2.png" alt="Product 2" class="product-image" />
+      <h2>Intel I5</h2>
+      <p>I5</p>
+      <p>20000</p>
+      <button (click)="addToCart({id: 2, name: 'I5', price: 20000, description: 'I5', imageUrl: './assets/product2.png'})">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./assets/product3.png" alt="Product 3" class="product-image" />
+      <h2>Intel I7</h2>
+      <p>I7</p>
+      <p>30000</p>
+      <button (click)="addToCart({id: 3, name: 'I7', price: 30000, description: 'I7',imageUrl:' '})">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./assets/product4.png" alt="Product 4" class="product-image" />
+      <h2>Intel I9</h2>
+      <p>Description for I9</p>
+      <p>40000</p>
+      <button (click)="addToCart({id: 4, name: 'I9', price: 40000, description: 'I9',imageUrl:' '})">Add to Cart</button>
+    </div>
+  </div>
