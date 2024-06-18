@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients Details Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional styling for customization */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="number"], select, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        .btn-custom {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script>
+        function setFormAction(action) {
+            document.getElementById('patientForm').action = action;
+        }
+    </script>
+</head>
+<body>
+<div class="form-container">
+    <h2>Patients Details Form</h2>
+    <form id="patientForm" method="post">
+        <div class="form-group">
+            <label for="patientID">Patient ID:</label>
+            <input type="text" class="form-control" id="patientID" name="patientID" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" name="age" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" class="form-control" id="address" name="address">
+        </div>
+    
+        <div class="form-group">
+            <label for="admittedDate">Admitted Date:</label>
+            <input type="date" class="form-control" id="admittedDate" name="admittedDate">
+        </div>
+    
+        <div class="form-group">
+            <label for="dischargeDate">Discharge Date:</label>
+            <input type="date" class="form-control" id="dischargeDate" name="dischargeDate">
+        </div>
+    
+        <div class="form-group">
+            <label for="affectedBy">Affected By:</label>
+            <input type="text" class="form-control" id="affectedBy" name="affectedBy">
+        </div>
+    
+        <div class="form-group">
+            <label for="referenceDoctor">Reference Doctor:</label>
+            <input type="text" class="form-control" id="referenceDoctor" name="referenceDoctor">
+        </div>
+    
+        <div class="button-group">
+            <button type="submit" class="btn btn-custom" onclick="setFormAction('http://localhost:7050/insert')">Insert</button>
+            <button type="submit" class="btn btn-custom" onclick="setFormAction('http://localhost:7050/update')">Update</button>
+            <button type="submit" class="btn btn-custom" onclick="setFormAction('http://localhost:7050/delete')">Delete</button>
+            <button type="submit" class="btn btn-custom" onclick="setFormAction('http://localhost:7050/view')">View</button>
+        </div>
+    </form>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+    
